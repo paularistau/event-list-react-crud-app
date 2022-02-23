@@ -1,7 +1,7 @@
 # contact-list-vuejs
 
 <h1 align="center">
-  <a name="logo"><img src="https://imgur.com/zrmoVYr.png" width="100"></a>
+  <a name="logo"><img src="https://imgur.com/5224pkQ.png" width="100"></a>
   <br>
   Event Mng
 </h1>
