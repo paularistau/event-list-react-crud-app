@@ -125,7 +125,7 @@ export const CardGroup = ({
                 {user?.user?.role?.toLowerCase() === "administrator" &&
                   !disableSubscription && (
                     <ButtonGroup fullWidth color="primary">
-                      <CardActionsGroup
+                      {/* <CardActionsGroup
                         variant="outlined"
                         size="large"
                         color="primary"
@@ -133,7 +133,7 @@ export const CardGroup = ({
                         onClick={() => onEdit!(item?.id ?? 0, item)}
                       >
                         Edit
-                      </CardActionsGroup>
+                      </CardActionsGroup> */}
                       <CardActionsGroup
                         variant="outlined"
                         size="large"
