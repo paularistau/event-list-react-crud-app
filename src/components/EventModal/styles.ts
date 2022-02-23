@@ -1,14 +1,6 @@
 import styled from "@emotion/styled";
-import {
-  Box,
-  Button,
-  Modal,
-  Paper,
-  RadioGroup,
-  Typography,
-  TextField,
-} from "@mui/material";
 import DateTimePicker from "@mui/lab/DateTimePicker";
+import { Box, Button, RadioGroup, TextField } from "@mui/material";
 
 export const ModalContent = styled(Box)`
   width: 905px;

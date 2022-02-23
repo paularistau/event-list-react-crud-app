@@ -6,7 +6,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import DownhillSkiingIcon from "@mui/icons-material/DownhillSkiing";
 import SettingsIcon from "@material-ui/icons/Settings";
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { UserContext } from "../../UserContext";
 import { EditModal } from "../../components/User/EditModal";

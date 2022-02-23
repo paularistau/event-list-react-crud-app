@@ -1,42 +1,22 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
-
-import {
-  FormLabel,
-  Modal,
-  Radio,
-  Typography,
-  Button,
-  FormControlLabel,
-  TextField,
-  InputLabel,
-  Select,
-  MenuItem,
-  FormControl,
-} from "@mui/material";
-
+import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import LocalSeeIcon from "@mui/icons-material/LocalSee";
-
 import {
-  ModalContent,
-  ModalHeader,
+  Button,
+  InputLabel,
+  MenuItem,
+  Modal,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
+import {
   CreatEventForm,
   CreatEventFormLine,
-  ButtonUploadPicture,
-  ImagePreview,
-  RadioGroupCustom,
   FormControlCustom,
-  Options,
+  ImagePreview,
+  ModalContent,
+  ModalHeader,
 } from "./styles";
-
-import useForm from "../../hooks/useForm";
-import useFetch from "../../hooks/useFetch";
-import { useNavigate } from "react-router-dom";
-import { EVENT_POST, USER_PUT } from "../../services";
-import { IEvent, IUser } from "../../types/types";
-import { OutlinedInput, Theme } from "@material-ui/core";
-import { UserContext } from "../../UserContext";
-import { CustomButton } from "../EventModal/styles";
 
 interface ModalProps {
   open: boolean;
@@ -45,29 +25,20 @@ interface ModalProps {
 }
 
 export const EditModal = ({ open, onClose, user }: ModalProps) => {
-  const [username, setUsername] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [role, setRole] = React.useState<string>("");
-  const { data, error, loading, request } = useFetch();
-  const navigate = useNavigate();
+  // const [username, setUsername] = useState<string>("");
+  // const [email, setEmail] = useState<string>("");
+  // const [role, setRole] = React.useState<string>("");
+  // const navigate = useNavigate();
+  // const formData = new FormData();
+  // async function handleSubmit() {
+  //   formData.append("username", username);
+  //   formData.append("name", email);
+  //   formData.append("type", role);
 
-  async function handleSubmit() {
-    const token = window.localStorage.getItem("token");
-
-    const body: IUser = {
-      username: username,
-      email: email,
-      role: role,
-    };
-
-    const { url, options } = USER_PUT(user?.id!, body);
-    const response = await fetch(url, options);
-    const json = await response.json();
-  }
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  //   const { url, options } = USER_PUT(user?.ID!, formData);
+  //   const response = await fetch(url, options);
+  //   const json = await response.json();
+  // }
 
   return (
     <Modal
@@ -84,7 +55,7 @@ export const EditModal = ({ open, onClose, user }: ModalProps) => {
       <ModalContent>
         <ModalHeader>
           <Typography id="modal-modal-title" variant="h4" component="h2">
-            Edit user_name profile
+            {user?.data.user_nicename} profile
           </Typography>
           <Button onClick={() => onClose(false)}>
             <CloseIcon />
@@ -104,8 +75,8 @@ export const EditModal = ({ open, onClose, user }: ModalProps) => {
               label="Username"
               variant="outlined"
               fullWidth
-              defaultValue={user?.username}
-              onChange={({ target }) => setUsername(target.value)}
+              defaultValue={user?.data.user_nicename}
+              // onChange={({ target }) => setUsername(target.value)}
               focused
             />
           </CreatEventFormLine>
@@ -115,20 +86,20 @@ export const EditModal = ({ open, onClose, user }: ModalProps) => {
               label="E-mail"
               variant="outlined"
               fullWidth
-              onChange={({ target }) => setUsername(target.value)}
+              // onChange={({ target }) => setUsername(target.value)}
               defaultValue={user?.data.user_email}
               focused
             />
           </CreatEventFormLine>
           <CreatEventFormLine>
             <FormControlCustom fullWidth variant="outlined">
-              <InputLabel id="demo-customized-select-label">Age</InputLabel>
+              <InputLabel id="demo-customized-select-label">Role</InputLabel>
               <Select
                 labelId="demo-customized-select-label"
                 id="demo-customized-select"
-                defaultValue={user?.role}
+                defaultValue={user?.roles[0]}
                 defaultChecked
-                onChange={({ target }) => setRole(target.value)}
+                // onChange={({ target }) => setRole(target.value)}
               >
                 {["administrator", "subscriber"].map((name) => (
                   <MenuItem key={name} value={name}>
@@ -139,15 +110,6 @@ export const EditModal = ({ open, onClose, user }: ModalProps) => {
             </FormControlCustom>
           </CreatEventFormLine>
         </CreatEventForm>
-
-        <CustomButton
-          variant="contained"
-          color="primary"
-          onClick={() => handleSubmit()}
-          fullWidth
-        >
-          Save
-        </CustomButton>
       </ModalContent>
     </Modal>
   );

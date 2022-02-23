@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { UserContext } from "../../UserContext";
 import { AllEvents } from "./components/AllEvents/AllEvents";
 import { MyEvents } from "./components/MyEvents/MyEvents";

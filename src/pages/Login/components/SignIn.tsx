@@ -1,20 +1,19 @@
 import { Button } from "@material-ui/core";
-import React, { Fragment, useContext, useEffect, useState } from "react";
-import {
-  BackgroundImage,
-  LoginContainer,
-  LoginForm,
-  Text,
-  H2,
-  LoginInput,
-  InputGroup,
-  Footer,
-  Error,
-} from "./styles";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import useForm from "../../../hooks/useForm";
-import { TOKEN_POST, USER_GET } from "../../../services";
 import { UserContext } from "../../../UserContext";
+import {
+  BackgroundImage,
+  Error,
+  Footer,
+  H2,
+  InputGroup,
+  LoginContainer,
+  LoginForm,
+  LoginInput,
+  Text,
+} from "./styles";
 
 export const SignIn = () => {
   const username = useForm();

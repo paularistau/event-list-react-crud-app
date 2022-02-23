@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import Drawer from "@material-ui/core/Drawer";
 import ListItem from "@material-ui/core/ListItem";
 
 export const SidebarDrawer = styled.div`

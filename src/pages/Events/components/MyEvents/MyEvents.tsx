@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Sidebar } from "../../../../components/Sidebar";
+import { useEffect, useState } from "react";
 import { CardGroup } from "../../../../components/Cards";
 import Loading from "../../../../components/Loading/Loading";
-import { IEventSubscribed } from "../../../../types/types";
-
-import { Header, LayoutView, PageTitle, EventsContent } from "./styles";
-import { SUBSCRIBE_DELETE, SUBSCRIBE_GET } from "../../../../services";
+import { Sidebar } from "../../../../components/Sidebar";
 import useFetch from "../../../../hooks/useFetch";
+import { SUBSCRIBE_DELETE, SUBSCRIBE_GET } from "../../../../services";
+import { IEventSubscribed } from "../../../../types/types";
+import { EventsContent, Header, LayoutView, PageTitle } from "./styles";
 
 export const MyEvents = (user: any) => {
   const { loading, request } = useFetch();
-  const [subscribedEvents, setSubscribedEvents] = useState<number[]>([]);
   const [myEvents, setMyEvents] = useState<IEventSubscribed[]>([]);
 
   const handleUnsubscribe = async (id: number) => {
@@ -34,10 +32,6 @@ export const MyEvents = (user: any) => {
     fetchSubscribedEvents();
   }, []);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   if (loading) return <Loading />;
 
   return (
@@ -51,7 +45,6 @@ export const MyEvents = (user: any) => {
           items={myEvents}
           disableSubscription
           onUnsubscribe={(id) => handleUnsubscribe(id)}
-          subscribedEvents={subscribedEvents}
           user={user}
         />
       </LayoutView>

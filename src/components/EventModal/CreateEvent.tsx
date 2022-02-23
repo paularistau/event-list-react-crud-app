@@ -1,53 +1,30 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
-import axios from "axios";
-
-import {
-  Box,
-  FormLabel,
-  MenuItem,
-  Modal,
-  Radio,
-  RadioGroup,
-  Select,
-  TextareaAutosize,
-  Typography,
-  Button,
-  FormControlLabel,
-  InputLabel,
-  TextField,
-} from "@mui/material";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-
 import CloseIcon from "@mui/icons-material/Close";
 import LocalSeeIcon from "@mui/icons-material/LocalSee";
-
+import { LocalizationProvider } from "@mui/lab";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import { Button, Modal, TextField, Typography } from "@mui/material";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+import useForm from "../../hooks/useForm";
+import { AlertMessage } from "../../pages/Login/components/styles";
+import { EVENT_POST } from "../../services";
+import { AlertProps } from "../../types/types";
+import Loading from "../Loading/Loading";
 import {
-  ModalContent,
-  ModalHeader,
-  CreatEventForm,
-  PreviewImage,
-  CreatEventFormLine,
-  ButtonUploadPicture,
   ButtonReuploadPicture,
-  ImagePreview,
-  RadioGroupCustom,
+  ButtonUploadPicture,
+  CreatEventForm,
+  CreatEventFormLine,
   CreatEventFormSubLine,
   CustomButton,
-  LoadingWrapper,
   DateTimePickerCustom,
+  ImagePreview,
+  LoadingWrapper,
+  ModalContent,
+  ModalHeader,
   TextFieldCustom,
 } from "./styles";
-import useForm from "../../hooks/useForm";
-import useFetch from "../../hooks/useFetch";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../UserContext";
-import { EVENT_POST } from "../../services";
-import { AlertProps, IEvent } from "../../types/types";
-import { CreatEventFormColumn } from "../User/styles";
-import Loading from "../Loading/Loading";
-import { LocalizationProvider } from "@mui/lab";
-import { AlertMessage } from "../../pages/Login/components/styles";
-
 interface ModalProps {
   open: boolean;
   onClose: (value: boolean) => void;
@@ -57,14 +34,12 @@ export const CreateEventModal = ({ open, onClose }: ModalProps) => {
   const eventName = useForm();
   const eventDescription = useForm();
   const eventType = useForm();
-  const eventStatus = useForm();
   const [startDate, setStartDate] = useState<any>();
   const [endDate, setEndDate] = useState<any>();
   const [showAlert, setShowAlert] = useState<AlertProps>();
-  const [disableSaveButton, setDisableSaveButton] = useState<boolean>(true);
 
   const [img, setImg] = React.useState<any>();
-  const { data, error, loading, request } = useFetch();
+  const { data, loading, request } = useFetch();
   const navigate = useNavigate();
   const formData = new FormData();
 

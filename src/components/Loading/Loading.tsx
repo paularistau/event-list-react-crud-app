@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrapper, LoadingContent } from "./styles";
+import { LoadingContent, Wrapper } from "./styles";
 
 const Loading = () => {
   const [step, setStep] = React.useState(0);

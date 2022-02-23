@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
 import { IEvent, IEventSubscribed } from "../../types/types";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import moment from "moment-timezone";
 
 import {
@@ -17,7 +16,6 @@ import {
   NothingHere,
 } from "./styles";
 import { ButtonGroup } from "@material-ui/core";
-import { UserContext } from "../../UserContext";
 import Loading from "../Loading/Loading";
 import useFetch from "../../hooks/useFetch";
 
@@ -80,8 +78,6 @@ export const CardGroup = ({
                 <CarTitle>
                   <Typography gutterBottom variant="h5" component="div">
                     {item?.name}
-                    {""}
-                    {item.id}
                   </Typography>
                   {subscribedEvents?.includes(item?.id!) && (
                     <CardSubLabel>Subscribed</CardSubLabel>

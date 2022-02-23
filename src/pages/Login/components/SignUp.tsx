@@ -1,20 +1,20 @@
 import { Button } from "@material-ui/core";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { USER_POST } from "../../../services";
+import { AlertProps, IUser } from "../../../types/types";
 import {
+  AlertMessage,
   BackgroundImage,
+  Footer,
+  H2,
+  InputGroup,
+  InputGroupInLine,
   LoginContainer,
   LoginForm,
-  Text,
-  H2,
   LoginInput,
-  InputGroupInLine,
-  InputGroup,
-  Footer,
-  AlertMessage,
+  Text,
 } from "./styles";
-import { useNavigate } from "react-router-dom";
-import { IUser, AlertProps } from "../../../types/types";
-import { USER_POST } from "../../../services";
 
 export const SignUp = () => {
   const [username, setUsername] = useState<string>("");

@@ -1,13 +1,5 @@
 import styled from "@emotion/styled";
-import {
-  Box,
-  Button,
-  FormControl,
-  Modal,
-  Paper,
-  RadioGroup,
-  Typography,
-} from "@mui/material";
+import { Box, FormControl, RadioGroup } from "@mui/material";
 
 export const ModalContent = styled(Box)`
   width: 905px;
