@@ -84,6 +84,7 @@ export const Sidebar = () => {
       <EditModal
         open={openEditUserModal}
         onClose={(value) => setOpenEditUserModal(value)}
+        user={data?.user}
       />
     </SidebarDrawer>
   );

@@ -34,6 +34,10 @@ export const MyEvents = (user: any) => {
     fetchSubscribedEvents();
   }, []);
 
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   if (loading) return <Loading />;
 
   return (

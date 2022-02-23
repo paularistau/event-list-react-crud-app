@@ -114,14 +114,19 @@ export const CardGroup = ({
                     size="large"
                     color="primary"
                     fullWidth
-                    onClick={() => onSubscribe!(item?.id ?? 0, item)}
+                    onClick={() =>
+                      disableSubscription
+                        ? onUnsubscribe!(item?.id ?? 0)
+                        : onSubscribe!(item?.id ?? 0, item)
+                    }
                   >
-                    {subscribedEvents?.includes(item?.id!)
+                    {subscribedEvents?.includes(item?.id!) ||
+                    disableSubscription
                       ? "Unsubscribe"
                       : "Subscribe"}
                   </CardActionsGroup>
                 )}
-                {user?.role?.toLowerCase() === "administrator" &&
+                {user?.user?.role?.toLowerCase() === "administrator" &&
                   !disableSubscription && (
                     <ButtonGroup fullWidth color="primary">
                       <CardActionsGroup

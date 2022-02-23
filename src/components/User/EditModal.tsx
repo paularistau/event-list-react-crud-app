@@ -41,7 +41,7 @@ import { CustomButton } from "../EventModal/styles";
 interface ModalProps {
   open: boolean;
   onClose: (value: boolean) => void;
-  user?: IUser;
+  user?: any;
 }
 
 export const EditModal = ({ open, onClose, user }: ModalProps) => {
@@ -64,6 +64,10 @@ export const EditModal = ({ open, onClose, user }: ModalProps) => {
     const response = await fetch(url, options);
     const json = await response.json();
   }
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <Modal
@@ -112,7 +116,7 @@ export const EditModal = ({ open, onClose, user }: ModalProps) => {
               variant="outlined"
               fullWidth
               onChange={({ target }) => setUsername(target.value)}
-              defaultValue={user?.email}
+              defaultValue={user?.data.user_email}
               focused
             />
           </CreatEventFormLine>
