@@ -1,0 +1,107 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "type": "administrator",
+      "name": "Admin",
+      "lastname": "Principal",
+      "email": "admin@admin.com",
+      "password": "admin",
+      "src": "https://observatoriodocinema.uol.com.br/wp-content/uploads/2019/07/neytiri_in_avatar_2-wide-do-we-really-need-avatar-2.jpeg"
+    },
+    {
+      "id": 2,
+      "type": "user",
+      "name": "Aaron",
+      "lastname": "Young",
+      "email": "aaron@email.com",
+      "password": "test",
+      "src": "https://observatoriodocinema.uol.com.br/wp-content/uploads/2019/07/neytiri_in_avatar_2-wide-do-we-really-need-avatar-2.jpeg",
+      "events": [
+        {
+          "id": 1,
+          "eventType": "football"
+        },
+        {
+          "id": 2,
+          "eventType": "Ice Skating"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "user",
+      "name": "Luna",
+      "lastname": "Wolt",
+      "email": "luna@email.com",
+      "password": "test",
+      "src": "https://observatoriodocinema.uol.com.br/wp-content/uploads/2019/07/neytiri_in_avatar_2-wide-do-we-really-need-avatar-2.jpeg",
+      "events": [
+        {
+          "id": 2,
+          "eventType": "Ice Skating"
+        }
+      ]
+    },
+    {
+      "name": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "type": "user",
+      "id": 4
+    },
+    {
+      "name": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "type": "user",
+      "id": 5
+    },
+    {
+      "name": "",
+      "lastname": "",
+      "email": "",
+      "password": "",
+      "type": "user",
+      "id": 6
+    }
+  ],
+  "event": [
+    {
+      "id": 8,
+      "eventType": "Ice Skating",
+      "userCreatorId": 1,
+      "name": "Figure Skating",
+      "description": "The Figure Skating events for the 2022 Winter Olympic Games will be held February 4-20, 2022, in Beijing, China, at the Capital Indoor Stadium. All four disciplines will take part, including the Team Event: 30 participants in the singles events (Women and Men), 20 Pair teams, and 24 Ice dance teams. The selection of representatives",
+      "start_date": "Tue Feb 22 2022 17:42:04 GMT-0300 (Brasilia Standard Time)",
+      "end_date": "Mon Feb 28 2022 16:22:57 GMT-0300 (Brasilia Standard Time)",
+      "status": "Publish",
+      "src": "https://imgur.com/LWkjx2C.png"
+    }
+  ],
+  "my-events": [
+    {
+      "eventId": 8,
+      "userId": 1,
+      "src": "https://imgur.com/LWkjx2C.png",
+      "name": "Figure Skating",
+      "description": "The Figure Skating events for the 2022 Winter Olympic Games will be held February 4-20, 2022, in Beijing, China, at the Capital Indoor Stadium. All four disciplines will take part, including the Team Event: 30 participants in the singles events (Women and Men), 20 Pair teams, and 24 Ice dance teams. The selection of representatives",
+      "status": "Publish",
+      "id": 8,
+      "deleted": false
+    },
+    {
+      "eventId": 8,
+      "userId": 1,
+      "src": "https://imgur.com/LWkjx2C.png",
+      "name": "Figure Skating",
+      "description": "The Figure Skating events for the 2022 Winter Olympic Games will be held February 4-20, 2022, in Beijing, China, at the Capital Indoor Stadium. All four disciplines will take part, including the Team Event: 30 participants in the singles events (Women and Men), 20 Pair teams, and 24 Ice dance teams. The selection of representatives",
+      "start_date": "Tue Feb 22 2022 17:42:04 GMT-0300 (Brasilia Standard Time)",
+      "end_date": "Mon Feb 28 2022 16:22:57 GMT-0300 (Brasilia Standard Time)",
+      "status": "Publish",
+      "id": 9
+    }
+  ]
+}

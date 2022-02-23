@@ -1,5 +1,5 @@
 import styled from "@emotion/styled/";
-import { TextField } from "@mui/material";
+import { Alert, TextField } from "@mui/material";
 import Paper from "@mui/material/Paper";
 
 export const LoginContainer = styled.div`
@@ -13,7 +13,7 @@ export const LoginContainer = styled.div`
 export const LoginForm = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   width: 40%;
   height: 390px;
   padding: 0 84px;
@@ -62,9 +62,10 @@ export const Text = styled.text`
   }
 `;
 
-export const InputGroup = styled.div`
+export const InputGroup = styled.form`
   display: flex;
   flex-direction: column;
+  margin-top: 36px;
 `;
 
 export const LoginInput = styled(TextField)`
@@ -77,10 +78,27 @@ export const Footer = styled.div`
   align-items: center;
   width: 100%;
   justify-content: flex-end;
+  margin-top: 24px;
 `;
 
 export const InputGroupInLine = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const AlertMessage = styled(Alert)`
+  position: absolute;
+  bottom: 24px;
+  width: 100%;
+`;
+
+export const Error = styled.text`
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 24px;
+  color: #c6343f;
+  margin-top: 4px;
 `;

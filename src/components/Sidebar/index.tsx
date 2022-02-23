@@ -1,62 +1,90 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
-import MessageIcon from "@material-ui/icons/Message";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import DownhillSkiingIcon from "@mui/icons-material/DownhillSkiing";
 import SettingsIcon from "@material-ui/icons/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { UserContext } from "../../UserContext";
+import { EditModal } from "../../components/User/EditModal";
 
 import {
   SidebarDrawer,
   UserInformations,
   Username,
   SidebarListItem,
+  Role,
+  UserText,
 } from "./styles";
 import { Avatar } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 export const Sidebar = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const { data, userLogout } = useContext(UserContext);
+  const [openEditUserModal, setOpenEditUserModal] = useState<boolean>(false);
+  let navigate = useNavigate();
 
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  // };
+  const menuItems = [
+    {
+      text: "All Events",
+      icon: <DashboardIcon />,
+      onClick: () => navigate("/"),
+    },
+    {
+      text: "My events",
+      icon: <DownhillSkiingIcon />,
+      onClick: () => navigate("/my-events"),
+    },
+    {
+      text: "Profile Settings",
+      icon: <SettingsIcon />,
+      onClick: () => setOpenEditUserModal(true),
+    },
+  ];
 
   return (
-    <SidebarDrawer variant="permanent" open={open}>
+    <SidebarDrawer>
       <UserInformations>
-        <Avatar src="https://observatoriodocinema.uol.com.br/wp-content/uploads/2019/07/neytiri_in_avatar_2-wide-do-we-really-need-avatar-2.jpeg" />
-        <Username>Aaron Young</Username>
+        <Avatar
+          src={
+            data?.src ??
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReiyHYtDJQ0t5jCs4j_PiD5ESMvPwnvHVa3w&usqp=CAU"
+          }
+        />
+        <UserText>
+          <Username>{data?.username}</Username>
+          <Role>{data?.role}</Role>
+        </UserText>
       </UserInformations>
       <Divider />
       <List>
-        {["All Events", "My events"].map((text, index) => (
-          <SidebarListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <DashboardIcon /> : <MessageIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
+        {menuItems?.map((item, index) => (
+          <SidebarListItem button key={index} onClick={item.onClick}>
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.text} />
           </SidebarListItem>
         ))}
       </List>
+
       <Divider />
       <List>
-        {["Profile Settings"].map((text, index) => (
-          <SidebarListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <SettingsIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </SidebarListItem>
-        ))}
+        <SidebarListItem button onClick={() => userLogout()}>
+          <ListItemIcon>
+            <LogoutIcon />
+          </ListItemIcon>
+          <ListItemText primary="logout" />
+        </SidebarListItem>
       </List>
+
+      <EditModal
+        open={openEditUserModal}
+        onClose={(value) => setOpenEditUserModal(value)}
+        user={data?.user}
+      />
     </SidebarDrawer>
   );
 };
