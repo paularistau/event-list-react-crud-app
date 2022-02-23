@@ -1,20 +1,41 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Sidebar } from "./components/Sidebar";
-import { Home } from "./pages/Home";
-import { SignIn } from "./pages/Login/SignIn";
-import { SignUp } from "./pages/Login/SignUp";
+import { Events } from "./pages/Events";
+import { MyEvents } from "./pages/Events/components/MyEvents/MyEvents";
+import { Login } from "./pages/Login";
+import { Users } from "./pages/Users";
 import "./App.css";
+import { UserStorage } from "./UserContext";
+import ProtectedRoute from "./helpers/ProtectedRoute";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Routes>
-          <Route path={"/sign-in"} element={<SignIn />}></Route>
-          <Route path={"/sign-up"} element={<SignUp />}></Route>
-          <Route path={"/"} element={<Home />}></Route>
-        </Routes>
+        <UserStorage>
+          <Routes>
+            <Route path={"/"} element={<Events />}></Route>
+            <Route path={"/login/*"} element={<Login />}></Route>
+
+            <Route
+              path={"/my-events"}
+              element={
+                <ProtectedRoute>
+                  <MyEvents />
+                </ProtectedRoute>
+              }
+            ></Route>
+
+            <Route
+              path={"/users"}
+              element={
+                <ProtectedRoute>
+                  <Users />
+                </ProtectedRoute>
+              }
+            ></Route>
+          </Routes>
+        </UserStorage>
       </BrowserRouter>
     </div>
   );

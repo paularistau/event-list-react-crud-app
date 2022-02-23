@@ -6,20 +6,40 @@ export interface IEventType {
 }
 
 export interface IEvent {
-  id: string;
-  eventTypeId: string;
-  userId: string;
-  name: string;
-  description: string;
-  start: Date;
-  end: Date;
-  status: "active" | "inactive";
+  id?: number;
+  name?: string;
+  type?: string;
+  description?: string;
+  user_id?: string;
+  start_date?: string;
+  end_date?: string;
+  status?: string;
+  img?: string;
+  src?: string;
 }
 
+export interface IEventSubscribed extends IEvent {
+  eventId?: number;
+}
 export interface IUser {
-  id: string;
-  name: string;
-  surname: string;
   email: string;
-  password: string;
+  id?: number;
+  name?: string;
+  role?: string;
+  username?: string;
+  subscribedEvents?: IEventSubscribed[];
+  src?: string;
+  password?: string;
+}
+
+export interface AlertProps {
+  active: boolean;
+  text?: string;
+  type?: "error" | "warning" | "success" | "info";
+}
+
+export interface IPagination {
+  page: number;
+  total: number;
+  user?: string;
 }
