@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# contact-list-vuejs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+  <a name="logo"><img src="https://imgur.com/zrmoVYr.png" width="100"></a>
+  <br>
+  Event Mng
+</h1>
+<br>
+This Repo is designed for create a simple Event List app, with the functionality of adding and removing events, and two types of user profile. Administrators and Users. 
+<p>Admin users can:</p>
+<br>
+<ul>
+<li>• manage (CRUD) event types,</li>
+<li>• manage (CRUD) events,</li>
+</ul>
+<br>
+<p>Admin users can:</p>
+<br>
+<ul>
+<li>• to see all the event types that he is subscribed to,</li>
+<li>• to subscribe to the event type.</li>
+</ul>
+<br>
 
-## Available Scripts
+<div align="center"><a name="menu"></a>
+    <h4>
+      Let's start installing
+    </h4>
+</div>
+<p>First run the API</p>
 
-In the project directory, you can run:
+```
+$npm install
 
-### `npm start`
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p>or:</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+$yarn
 
-### `npm test`
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p>To run app without docker enter the following command in a terminal:</p>
 
-### `npm run build`
+```
+$npm run start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p>or:</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+$yarn start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+![ Home - List All Events](https://imgur.com/KTVvl9N.png)
+Home - List All Events
+![ All Users subscribes - List All Users subscribes](https://imgur.com/DM2XJo0.png)
+Add New Contact - List All Contacts
+![Login page, integrated with wordpress - Login page](https://imgur.com/lG3sXNI.png)
+Login page - List All Contacts
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You can check Figma prototype layout <a href="https://www.figma.com/file/XGwYs6KDbukSLd0AjmWVGK/Figma-Material-Design-UI-Kit-(Desktop-Dashboard)-(Community)?node-id=5687%3A116">here!</a>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<hr>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### <a name="software"></a>Features and API hosted in wordpress
