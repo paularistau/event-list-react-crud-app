@@ -80,6 +80,8 @@ export const CardGroup = ({
                 <CarTitle>
                   <Typography gutterBottom variant="h5" component="div">
                     {item?.name}
+                    {""}
+                    {item.id}
                   </Typography>
                   {subscribedEvents?.includes(item?.id!) && (
                     <CardSubLabel>Subscribed</CardSubLabel>

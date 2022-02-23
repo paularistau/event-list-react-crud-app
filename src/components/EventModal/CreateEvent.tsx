@@ -76,8 +76,6 @@ export const CreateEventModal = ({ open, onClose }: ModalProps) => {
     formData.append("start_date", startDate.toString());
     formData.append("end_date", endDate.toString());
 
-    console.log("EVENT_POST", formData);
-
     const { url, options } = EVENT_POST(formData);
     const { response } = await request(url, options);
 
@@ -89,7 +87,7 @@ export const CreateEventModal = ({ open, onClose }: ModalProps) => {
       });
       setTimeout(() => {
         onClose(false);
-        navigate("/");
+        window.location.reload();
       }, 3000);
     }
   }
@@ -99,8 +97,6 @@ export const CreateEventModal = ({ open, onClose }: ModalProps) => {
       preview: URL.createObjectURL(file),
       raw: file,
     });
-
-    console.log(img);
   }
   useEffect(() => {
     if (data) {

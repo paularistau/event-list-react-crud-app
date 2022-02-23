@@ -20,9 +20,9 @@ import { Idata, UserContext } from "../../../../UserContext";
 import {
   EVENT_DELETE,
   EVENT_GET,
-  MY_EVENT_POST,
-  MY_EVENT_GET,
-  MY_EVENT_DELETE,
+  SUBSCRIBE_POST,
+  SUBSCRIBE_GET,
+  SUBSCRIBE_DELETE,
 } from "../../../../services";
 import useFetch from "../../../../hooks/useFetch";
 import { json } from "stream/consumers";
@@ -60,7 +60,7 @@ export const AllEvents = (user?: any) => {
       }
 
       if (response!.ok && subscribedItem?.eventId) {
-        const { url, options } = MY_EVENT_DELETE(subscribedItem?.eventId);
+        const { url, options } = SUBSCRIBE_DELETE(subscribedItem?.eventId);
         const { response } = await request(url, options);
         navigate("/");
       }
@@ -71,20 +71,18 @@ export const AllEvents = (user?: any) => {
 
   const formData = new FormData();
   const handleSubscribe = async (id: number, item: IEvent) => {
-    formData.append("img", item?.src!);
+    formData.append("src", item?.src!);
     formData.append("name", item?.name!);
     formData.append("description", item?.description!);
     formData.append("type", item?.type!);
     formData.append("start_date", item?.start_date!);
     formData.append("end_date", item?.end_date!);
-    formData.append("event_id", id.toString());
+    formData.append("event_id", item?.id?.toString()!);
 
-    const { url, options } = MY_EVENT_POST(formData);
+    const { url, options } = SUBSCRIBE_POST(formData);
     const { response } = await request(url, options);
 
     if (response!.ok) window.location.reload();
-
-    console.log({ ...formData, eventId: id });
   };
 
   async function fetchEvents() {
@@ -93,17 +91,7 @@ export const AllEvents = (user?: any) => {
   }
 
   useEffect(() => {
-    async function fetchSubscribedEvents() {
-      const { url, options } = MY_EVENT_GET();
-      const { response, json } = await request(url, options);
-      if (response!.ok) {
-        let subEvt: number[] = [];
-        json.map((item: IEventSubscribed) => subEvt.push(item?.eventId!));
-        setSubscribedEvents(subEvt);
-        fetchEvents();
-      }
-    }
-    fetchSubscribedEvents();
+    fetchEvents();
   }, []);
 
   const refreshPage = (state: boolean) => {
@@ -111,10 +99,6 @@ export const AllEvents = (user?: any) => {
       fetchEvents();
     }
   };
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <EventsContent>

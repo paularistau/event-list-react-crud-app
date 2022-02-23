@@ -1,5 +1,3 @@
-import { IEvent, IEventSubscribed, IPagination, IUser } from "../types/types";
-
 export const API_URL = "http://evtmng.com/json";
 
 export function TOKEN_POST(body: any) {
@@ -96,14 +94,16 @@ export function EVENT_GET() {
     url: `${API_URL}/api/event`,
     options: {
       method: "GET",
-      cache: "no-store",
+      headers: {
+        Authorization: "Bearer " + window.localStorage.getItem("token"),
+      },
     },
   };
 }
 
-export function MY_EVENT_POST(formData: any) {
+export function SUBSCRIBE_POST(formData: any) {
   return {
-    url: API_URL + "/api/my_event",
+    url: API_URL + "/api/subscribe",
     options: {
       method: "POST",
       headers: {
@@ -114,9 +114,9 @@ export function MY_EVENT_POST(formData: any) {
   };
 }
 
-export function MY_EVENT_GET() {
+export function SUBSCRIBE_GET() {
   return {
-    url: `${API_URL}/api/my_event`,
+    url: `${API_URL}/api/subscribes`,
     options: {
       method: "GET",
       headers: {
@@ -126,9 +126,9 @@ export function MY_EVENT_GET() {
   };
 }
 
-export function MY_EVENT_PUT(id: number, body: any) {
+export function SUBSCRIBE_PUT(id: number, body: any) {
   return {
-    url: `${API_URL}/api/my_event/${id}`,
+    url: `${API_URL}/api/subscribe/${id}`,
     options: {
       method: "PUT",
       headers: {
@@ -151,9 +151,9 @@ export function EVENT_DELETE(id: number) {
   };
 }
 
-export function MY_EVENT_DELETE(id: number) {
+export function SUBSCRIBE_DELETE(id: number) {
   return {
-    url: `${API_URL}/api/my_event/${id}`,
+    url: `${API_URL}/api/subscribe/${id}`,
     options: {
       method: "DELETE",
       headers: {

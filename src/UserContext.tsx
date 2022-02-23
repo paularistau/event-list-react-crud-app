@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  MY_EVENT_GET,
+  SUBSCRIBE_GET,
   TOKEN_POST,
   TOKEN_VALIDATE_POST,
   USER_GET,
@@ -43,7 +43,7 @@ export const UserStorage = ({ children }: any) => {
 
   async function fetchUserEvents() {
     if (data?.user) {
-      const { url, options } = MY_EVENT_GET();
+      const { url, options } = SUBSCRIBE_GET();
       const response = await fetch(url, options);
       const json = await response.json();
 
